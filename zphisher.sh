@@ -570,8 +570,8 @@ custom_url() {
         processed_url="Unable to Short URL"
     fi
 
-    echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} URL 1 : ${GREEN}$url"
-    echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} URL 2 : ${ORANGE}$processed_url"
+    echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} URL 1 : ${GREEN}https://$url"
+    echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} URL 2 : ${ORANGE}https://$processed_url"
     [[ $processed_url != *"Unable"* ]] && echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} URL 3 : ${ORANGE}$masked_url"
 }
 
