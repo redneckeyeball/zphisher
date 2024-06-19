@@ -528,7 +528,7 @@ custom_mask() {
     echo
     if [[ $(echo "$mask_op" | tr '[:upper:]' '[:lower:]') == "y" ]]; then
         echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Enter your custom URL below ${CYAN}(${ORANGE}Example: www.therealwebsite.com${CYAN})\n"
-        read -e -p "${WHITE} ==> ${ORANGE}" -i mask_url
+        read -e -p "${WHITE} ==> ${ORANGE}" mask_url
         if [[ ${mask_url} =~ ^https?:// || ${mask_url::4} == "www." ]] && \
            [[ ${mask_url#http://} =~ ^[^,~!@%:\=\#\;\^\*\"\'\|\?+\<\>\(\{\)\}\\/]+$ ]] && \
            [[ ${mask_url#https://} =~ ^[^,~!@%:\=\#\;\^\*\"\'\|\?+\<\>\(\{\)\}\\/]+$ ]]; then
