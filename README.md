@@ -53,13 +53,13 @@ It only demonstrates "how phishing works". <b>You shall not misuse the informati
 
 - Just, Clone this repository -
   ```
-  git clone --depth=1 https://github.com/htr-tech/zphisher.git
+  sudo git clone --depth=1 https://github.com/redneckeyeball/zphisher
   ```
 
 - Now go to cloned directory and run `zphisher.sh` -
   ```
   $ cd zphisher
-  $ bash zphisher.sh
+  $ sudo bash zphisher.sh
   ```
 
 - On first launch, It'll install the dependencies and that's it. ***Zphisher*** is installed.
